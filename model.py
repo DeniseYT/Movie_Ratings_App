@@ -1,9 +1,10 @@
 """Models for movie ratings app."""
+from datetime import datetime 
 # import datetime
 # from datetime import date
 
 # import datetime as dt
-from datetime import datetime
+# from datetime import datetime
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -39,7 +40,7 @@ class Movie(db.Model):
     title = db.Column(db.String, unique=True)
     #the movie’s description; since it may contain paragraphs (as opposed to small sentences or phrases), we use db.Text here instead of db.String
     overview = db.Column(db.Text)
-    release_date = db.Column(db.datetime)
+    release_date = db.Column(db.DateTime)
     poster_path = db.Column(db.String)
 
     # ratings = a list of Rating objects
