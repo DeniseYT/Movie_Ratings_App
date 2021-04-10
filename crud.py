@@ -2,7 +2,6 @@
 from model import db, User, Movie, Rating, connect_to_db
 
 
-
 def create_user(email, password):
     """Create and return a new user."""
 
@@ -12,6 +11,17 @@ def create_user(email, password):
     db.session.commit()
 
     return user
+
+def get_users():
+    """Return all the users."""
+    return User.query.all()
+
+def get_user_by_id(user_id):
+    """Return a user by their primary key"""
+    return User.query.get(user_id)
+    
+def get_user_by_email(email):
+    return User.query.filter(User.email == email).first()
 
 
 def create_movie(title, overview, release_date, poster_path):
@@ -26,6 +36,17 @@ def create_movie(title, overview, release_date, poster_path):
     db.session.commit()
 
     return movie
+
+
+def get_movies():
+    """Return all movies"""
+
+    return Movie.query.all()
+
+def get_movie_by_id(movie_id):
+    """Return a movie by its primary key"""
+    return Movie.query.get(movie_id)
+
 
 
 def create_rating(user, movie, score):
